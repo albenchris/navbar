@@ -2,6 +2,34 @@ nav {
     width: 100%;
     background-color: black;
     color: white;
-    height: 40px;
+    height: 60px;
+    box-shadow: 0 1px 3px hsla(0, 0%, 6%, 0.13);
     
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5em;
+}
+
+nav h1,
+nav div {
+    flex: 1;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    flex: 2;
+    justify-content: space-evenly;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+}
+
+nav div button {
+    border: none;
+    border-radius: 2em;
+    padding: 1em;
 }
