@@ -38,14 +38,12 @@ const MobileLinks = ({ showWindow, subscribe }) => {
                 className={menuOpen ? 'burger open' : 'burger closed'}
                 onClick={toggleMenu}
             >
-                <div className='line-one'></div>
-                <div className='line-two'></div>
-                <div className='line-three'></div>
+                <div></div>
+                <div></div>
+                <div></div>
             </div>
 
-            {menuOpen &&
-                menu
-            }
+            {/* {menuOpen && menu} */}
         </>
     );
 };
