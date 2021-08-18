@@ -1,5 +1,3 @@
-import { Link } from 'react-router-dom';
-
 import { screenSize } from '../../utils/sizes';
 import DesktopLinks from './menus/DesktopLinks';
 import MobileLinks from './menus/MobileLinks';
@@ -17,25 +15,17 @@ const NavBar = () => {
     const mediaWidth = window.innerWidth;
 
     const NavLinks = () => {
-        if (mediaWidth < tablet) return <MobileLinks/>;
+        if (mediaWidth <= tablet) return <MobileLinks/>;
+        if (mediaWidth > tablet) return <DesktopLinks />;
 
+        // =================== THIS DOESN'T WORK PROPERLY (will revisit) ============================
         // switch (mediaWidth) {
-        //     case mediaWidth <= mobile:
-        //         console.log(`media: ${mediaWidth} < mobile: ${mobile}`);
-        //         return <MobileLinks />;
-
-        //     case mediaWidth <= tablet && mediaWidth > mobile:
-        //         console.log(`media: ${mediaWidth} < tablet: ${tablet}`);
-        //         return <MobileLinks />;
-
-        //     case mediaWidth <= laptop && mediaWidth > tablet:
-        //         console.log(`media: ${mediaWidth} < laptop: ${laptop}`);
-        //         return <DesktopLinks />;
-
-        //     default:
-        //         console.log(`media: ${mediaWidth} < desktop: ${desktop}`);
-        //         return <DesktopLinks />;
+        //     case mediaWidth >= mobile: return <MobileLinks />;
+        //     case mediaWidth >= tablet && mediaWidth < laptop: return <MobileLinks />;
+        //     case mediaWidth >= laptop && mediaWidth > desktop: return <DesktopLinks />;
+        //     default: return <MobileLinks />;
         // }
+        // ==========================================================================================
     }
 
     const subscribe = () => {
@@ -48,9 +38,6 @@ const NavBar = () => {
 
             {NavLinks()}
 
-            <div>
-                <button onClick={subscribe}>Subscribe</button>
-            </div>
         </nav>
     );
 }
