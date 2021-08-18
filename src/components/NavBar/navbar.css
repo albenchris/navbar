@@ -4,6 +4,7 @@ nav {
     color           : white;
     height          : 60px;
     box-shadow      : 0 1px 3px hsla(0, 0%, 6%, 0.13);
+    z-index         : 98;
 
     display        : flex;
     align-items    : center;
@@ -11,15 +12,9 @@ nav {
     padding        : 0 1.5em;
 }
 
-/* nav h1,
-nav div {
-    flex: 1;
-} */
-
 nav ul {
     list-style     : none;
     display        : flex;
-    /* flex        : 2; */
     width          : 50%;
     justify-content: space-evenly;
 }
@@ -29,19 +24,62 @@ nav ul li a {
     color          : white;
 }
 
+.nav-buttons {
+    width          : 25%;
+    display        : flex;
+    justify-content: space-evenly;
+}
+
 nav div button {
     border       : none;
     border-radius: 2em;
     padding      : 1em;
 }
 
+.burger {
+    display: none;
+}
+
 @media screen and (max-width: 992px) {
 
     .mobile-hide {
-        display: none;
+        transform: translateX(100%);
+    }
+
+    .nav-links,
+    .nav-buttons {
+        z-index         : 98;
+        background-color: black;
+        position        : absolute;
+        width           : 200px;
+        right           : 0;
+        padding         : 0 30px;
+        display         : flex;
+        flex-direction  : column;
+        align-items     : flex-start;
+        justify-content : space-around;
+        transition      : transform 0.5s ease-in;
+    }
+
+    .nav-links {
+        top   : 60px;
+        height: 300px;
+    }
+
+    .nav-buttons {
+        top   : 360px;
+        height: 170px;
+    }
+
+    .nav-links li,
+    .nav-links li a,
+    .nav-buttons button {
+        width: 100%;
     }
 
     .burger {
+        z-index : 99;
+        display : block;
         height  : 20px;
         width   : 20px;
         position: relative;

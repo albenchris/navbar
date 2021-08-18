@@ -20,14 +20,19 @@ const NavBar = () => {
         <nav>
             <h1>NAVIGATIOn</h1>
 
-            <ul className='links mobile-hide'>
+            
+            <ul
+                className={menuOpen ? 'nav-links' : 'nav-links mobile-hide'}
+            >
                 <li><Link>Our mission</Link></li>
                 <li><Link>Who we help</Link></li>
                 <li><Link>Get involved</Link></li>
                 <li><Link>Contact</Link></li>
             </ul>
 
-            <div className='buttons mobile-hide'>
+            <div 
+                className={menuOpen ? 'nav-buttons' : 'nav-buttons mobile-hide'}
+            >
                 <button
                     onClick={subscribe}
                 >
