@@ -1,4 +1,4 @@
-export const deviceSize = {
+export const screenSize = {
     mobile: 768,
     tablet: 992,
     laptop: 1324,
