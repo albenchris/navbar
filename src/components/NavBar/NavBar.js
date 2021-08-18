@@ -14,9 +14,17 @@ const NavBar = () => {
 
     const mediaWidth = window.innerWidth;
 
+    const subscribe = () => {
+        console.log('You have subscribed!');
+    }
+
+    const showWindow = () => {
+        console.log(window);
+    }
+
     const NavLinks = () => {
-        if (mediaWidth <= tablet) return <MobileLinks/>;
-        if (mediaWidth > tablet) return <DesktopLinks />;
+        if (mediaWidth <= tablet) return <MobileLinks showWindow={showWindow} subscribe={subscribe} />;
+        if (mediaWidth > tablet) return <DesktopLinks showWindow={showWindow} subscribe={subscribe} />;
 
         // =================== THIS DOESN'T WORK PROPERLY (will revisit) ============================
         // switch (mediaWidth) {
@@ -28,15 +36,11 @@ const NavBar = () => {
         // ==========================================================================================
     }
 
-    const subscribe = () => {
-        console.log('You have subscribed!');
-    }
-
     return (
         <nav>
             <h1>NAVIGATIOn</h1>
 
-            {NavLinks()}
+            <NavLinks />
 
         </nav>
     );

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 
-const DesktopLinks = () => {
+const DesktopLinks = ({ showWindow, subscribe }) => {
+
     return (
         <>
             <ul className='desktop-links'>
@@ -12,8 +13,16 @@ const DesktopLinks = () => {
 
             <div>
                 <button
-                    // onClick={subscribe}
-                >Subscribe</button>
+                    onClick={subscribe}
+                >
+                    Subscribe
+                </button>
+
+                <button
+                    onClick={showWindow}
+                >
+                    Show window
+                </button>
             </div>
         </>
     );

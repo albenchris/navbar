@@ -1,30 +1,42 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const MobileLinks = () => {
+const MobileLinks = ({ showWindow, subscribe }) => {
     const [menuOpen, setMenuOpen] = useState(false);
 
-    const menu =
+    const menu = (
         <>
-            <ul className='mobile-links'>
+            <ul className='links'>
                 <li><Link>Our mission</Link></li>
                 <li><Link>Who we help</Link></li>
                 <li><Link>Get involved</Link></li>
                 <li><Link>Contact</Link></li>
             </ul>
 
-            <button
-            // onClick={subscribe}
-            >Subscribe</button>
-        </>
+            <div className='buttons'>
+                <button
+                    onClick={subscribe}
+                >
+                    Subscribe
+                </button>
 
+                <button
+                    onClick={showWindow}
+                >
+                    Show window
+                </button>
+            </div>
+        </>
+    );
+
+    const toggleMenu = () => setMenuOpen(!menuOpen);
 
     return (
         <>
             <div
-                className='burger'
-            // className={menuOpen ? 'burger open' : 'burger closed'}
-            // onClick={setMenuOpen(!menuOpen)}
+                // className='burger'
+                className={menuOpen ? 'burger open' : 'burger closed'}
+                onClick={toggleMenu}
             >
                 <div className='line-one'></div>
                 <div className='line-two'></div>
