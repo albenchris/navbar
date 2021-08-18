@@ -1,18 +1,10 @@
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { screenSize } from '../../utils/sizes';
-import DesktopLinks from './menus/DesktopLinks';
-import MobileLinks from './menus/MobileLinks';
 import './navbar.css';
 
 const NavBar = () => {
-    // console.log(window);
-    const {
-        mobile,
-        tablet,
-        laptop,
-        desktop
-    } = screenSize;
-
-    const mediaWidth = window.innerWidth;
+    const [menuOpen, setMenuOpen] = useState(false);
 
     const subscribe = () => {
         console.log('You have subscribed!');
@@ -22,26 +14,41 @@ const NavBar = () => {
         console.log(window);
     }
 
-    const NavLinks = () => {
-        if (mediaWidth <= tablet) return <MobileLinks showWindow={showWindow} subscribe={subscribe} />;
-        if (mediaWidth > tablet) return <DesktopLinks showWindow={showWindow} subscribe={subscribe} />;
-
-        // =================== THIS DOESN'T WORK PROPERLY (will revisit) ============================
-        // switch (mediaWidth) {
-        //     case mediaWidth >= mobile: return <MobileLinks />;
-        //     case mediaWidth >= tablet && mediaWidth < laptop: return <MobileLinks />;
-        //     case mediaWidth >= laptop && mediaWidth > desktop: return <DesktopLinks />;
-        //     default: return <MobileLinks />;
-        // }
-        // ==========================================================================================
-    }
+    const toggleMenu = () => setMenuOpen(!menuOpen);
 
     return (
         <nav>
             <h1>NAVIGATIOn</h1>
 
-            <NavLinks />
+            <ul className='links mobile-hide'>
+                <li><Link>Our mission</Link></li>
+                <li><Link>Who we help</Link></li>
+                <li><Link>Get involved</Link></li>
+                <li><Link>Contact</Link></li>
+            </ul>
 
+            <div className='buttons mobile-hide'>
+                <button
+                    onClick={subscribe}
+                >
+                    Subscribe
+                </button>
+
+                <button
+                    onClick={showWindow}
+                >
+                    Show window
+                </button>
+            </div>
+
+            <div
+                className={menuOpen ? 'burger open' : 'burger'}
+                onClick={toggleMenu}
+            >
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
         </nav>
     );
 }
